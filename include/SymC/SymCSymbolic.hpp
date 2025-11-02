@@ -20,6 +20,9 @@ public:
     gtd::SymCNodeType nodeType() override {
         return SymCSymbolicNode;
     }
+    std::string to_string() const override {
+        return std::string{"#SYMBOLIC#"};
+    }
 };
 
 class gtd::Symbol: public gtd::SymCSymbolic {
@@ -28,9 +31,9 @@ public:
         return gtd::SymCSymbolType;
     }
     Symbol(char);
-    bool operator==(std::unique_ptr<gtd::SymCNode>& expr) const override {
+    bool operator==(const gtd::SymCNodePtr& expr) const override {
         if(expr->type() != gtd::SymCSymbolType) return false;
-        return _symbol == get_SymC_ptr<gtd::Symbol>(expr)->_symbol;
+        return _symbol == gtd::get_SymC_ptr<gtd::Symbol>(expr)->_symbol;
     }
     SymCNodePtr copy() const override {
         return std::make_unique<gtd::Symbol>(_symbol);

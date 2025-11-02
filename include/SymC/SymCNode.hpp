@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <string>
 
 namespace gtd {
 
@@ -37,8 +38,15 @@ public:
     virtual gtd::SymCType type() {
         return gtd::SymCNull;
     }
-    virtual bool operator==(gtd::SymCNodePtr&) const = 0;
-    virtual gtd::SymCNodePtr copy() const = 0;
+    virtual bool operator==(const gtd::SymCNodePtr& node) const {
+        if(node->type() == gtd::SymCNull) return true;
+        return false;
+    }
+    virtual gtd::SymCNodePtr copy() const {
+        return std::make_unique<gtd::SymCNode>();
+    }
     //virtual SymCNodePtr subs(SymCExpr,SymCExpr) const = 0;
-    virtual std::string to_string() const = 0;
+    virtual std::string to_string() const {
+        return std::string{"#NULL#"};
+    }
 };

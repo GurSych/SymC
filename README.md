@@ -13,7 +13,7 @@ SymC is my C++ library for symbolic computing
 ```
 
 > [!NOTE]
-> All library classes are in `gtd` namespace.
+> All library classes are in `gtd::` namespace.
 
 ## Personal compiling notes
 

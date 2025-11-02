@@ -19,6 +19,9 @@ public:
         return gtd::SymCOperatorNode;
     }
     SymCOperator(gtd::SymCExpr,gtd::SymCExpr);
+    std::string to_string() const override {
+        return std::string{"#OPERATOR#"};
+    }
 protected:
     gtd::SymCExpr _left;
     gtd::SymCExpr _right;
@@ -30,7 +33,7 @@ public:
         return gtd::SymCPlusType;
     }
     using gtd::SymCOperator::SymCOperator;
-    bool operator==(std::unique_ptr<gtd::SymCNode>& expr) const override {
+    bool operator==(const gtd::SymCNodePtr& expr) const override {
         if(expr->type() != gtd::SymCPlusType) return false;
         return (_left == gtd::get_SymC_ptr<gtd::SymCPlus>(expr)->_left) && (_right == gtd::get_SymC_ptr<gtd::SymCPlus>(expr)->_right);
     }

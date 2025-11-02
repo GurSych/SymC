@@ -8,12 +8,12 @@ gtd::SymCExpr::SymCExpr(int64_t value)         : _node{std::make_unique<gtd::Sym
 gtd::SymCExpr gtd::SymCExpr::copy() const {
     return gtd::SymCExpr{_node->copy()};
 }
-std::string gtd::SymCExpr::to_string() const {
-    return _node->to_string();
-}
 bool gtd::SymCExpr::operator==(const gtd::SymCExpr& left_expr) const {
-    return _node == left_expr._node;
+    return _node->operator==(left_expr._node);
 }
 gtd::SymCExpr gtd::SymCExpr::operator+(const gtd::SymCExpr& left_obj) {
-    return gtd::SymCExpr{std::make_unique<gtd::SymCPlus>(std::move(_node),left_obj.copy())};
+    return gtd::SymCExpr{std::make_unique<gtd::SymCPlus>(_node->copy(),left_obj.copy())};
+}
+std::string gtd::SymCExpr::to_string() const {
+    return _node->to_string();
 }
