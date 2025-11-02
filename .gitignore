@@ -1,6 +1,11 @@
-### Test .cpp ###
-*.cpp
-### Test .exe ###
+# Local test files
+/*.cpp
+# Build outputs
+*.o
+*.a
+*.so
+*.dylib
+*.dll
 *.exe
-###  VS Code  ###
+# VS Code
 .vscode/
