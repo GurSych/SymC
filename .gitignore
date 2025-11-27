@@ -7,5 +7,10 @@
 *.dylib
 *.dll
 *.exe
+# Visual Studio
+.vs/
+/*.json
 # VS Code
 .vscode/
+# Tests
+/test

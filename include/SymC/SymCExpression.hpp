@@ -18,6 +18,8 @@ template<typename T>
 friend T* gtd::get_SymC_ptr(const gtd::SymCExpr&);
 public:
     SymCExpr();
+    SymCExpr(const SymCExpr&);
+    SymCExpr(SymCExpr&&);
     SymCExpr(gtd::SymCNodePtr);
     SymCExpr(int64_t);
     gtd::SymCNodeType nodeType() {
@@ -26,6 +28,8 @@ public:
     gtd::SymCType type() {
         return _node->type();
     }
+    SymCExpr& operator=(const SymCExpr&);
+    SymCExpr& operator=(SymCExpr&&);
     gtd::SymCExpr copy() const;
     bool operator==(const gtd::SymCExpr&) const;
     gtd::SymCExpr operator+(const gtd::SymCExpr&);
